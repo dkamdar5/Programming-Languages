@@ -60,9 +60,14 @@ mydrop n (x:xs)
 --app [] (x:xs) = x:xs
 
 --10. Increment
---inclist :: (Num a) => [a] -> a
---inclist [] 	= []
---inclist (x:xs) 	= map (+) (x:xs)
+inclist :: (Num a) => [a] -> [a]
+inclist [] 	= []
+inclist (x:xs)	= map (+ 1) (x:xs)
+
+--11. Double
+doublelist :: (Num a) => [a] -> [a]
+doublelist []	  = []
+doublelist (x:xs) = map (* 2) (x:xs)
 
 --12. Sum
 sumlist :: (Num a) => [a] -> a
@@ -73,3 +78,14 @@ sumlist (x:xs) = foldr (+) x (xs)
 prodlist :: (Num a) => [a] -> a
 prodlist [] = 1
 prodlist (x:xs) = foldr (*) 1 (x:xs)
+
+--14. Zip
+--zip :: [t] -> [t1] -> [(t,t1)]
+zip [] [] = []
+zip xx yy
+   | xx == []  = []
+   | yy == []  = []
+   | otherwise = (head xx, head yy):Mp1.zip (tail xx) (tail yy)
+
+--15. Add Pairs
+--addpairs xx yy
