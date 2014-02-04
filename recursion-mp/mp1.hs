@@ -1,7 +1,6 @@
 module Mp1 where
 
 --1. Factorial
-fact 0 = 0
 fact 1 = 1
 fact n = n * fact (n-1)
 
@@ -48,14 +47,24 @@ mydrop n (x:xs)
    | otherwise	   = mydrop (n-1) xs
 
 --8. Reverse
-rev [] 	   	     	= []
-rev (x:xs)
-   | length (x:xs) == 1 = x
+--rev [] 	   	     	= []
+--rev (x:xs)
+--   | length (x:xs) == 1 = x
 --   | length xs == 1  	= xs:x
-   | otherwise	     	= (rev xs) : x
+--   | otherwise	     	= (rev xs) : x
 
---rev []     = []
---rev (x:xs) = 
 
 --9. Append
---app xx yy
+--app [] [] = []
+--app (x:xs) [] = x:xs
+--app [] (x:xs) = x:xs
+
+--10. Increment
+--inclist :: (Num a) => [a] -> a
+--inclist [] 	= []
+--inclist (x:xs) 	= map (+) (x:xs)
+
+--13. Product
+prodlist :: (Num a) => [a] -> a
+prodlist [] = 1
+prodlist (x:xs) = foldr (*) 1 (x:xs)
