@@ -64,6 +64,11 @@ mydrop n (x:xs)
 --inclist [] 	= []
 --inclist (x:xs) 	= map (+) (x:xs)
 
+--12. Sum
+sumlist :: (Num a) => [a] -> a
+sumlist [] = 0
+sumlist (x:xs) = foldr (+) x (xs)
+
 --13. Product
 prodlist :: (Num a) => [a] -> a
 prodlist [] = 1
