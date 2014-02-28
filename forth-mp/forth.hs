@@ -47,7 +47,8 @@ dinsert key val dict =
 
 -- Initial Dictionary
 
-dictionary = dinsert "+" (Prim $ wrap2 (+)) H.empty
+dictionary  = dinsert "+" (Prim $ wrap2 (+)) H.empty
+--dictionary2 = dinsert "*" (Prim $ wrap2 (*)) dictionary
 
 -- The Evaluator
 
@@ -55,11 +56,23 @@ eval :: [String] -> ForthState -> IO ForthState
 eval []    (istack, [],     dict) = return (istack, [], dict)
 eval words (istack, cstack, dict) =
   case dlookup (head words) dict of
-    Num i        -> eval xs (i:istack, cstack, dict)
-    Prim f       -> eval xs (f istack, cstack, dict)
-    Unknown "."  -> do { putStrLn $ show (head istack);
-                             eval xs (tail istack, cstack, dict) }
+    Num i          -> eval xs (i:istack, cstack, dict)
+    Prim f         -> eval xs (f istack, cstack, dict)
+    Unknown "dup"  -> eval xs (hd:istack, cstack, dict)
+    Unknown "drop" -> eval xs (td, cstack, dict)
+    Unknown "rot"  -> eval xs (reverse istack, cstack, dict)
+    Unknown "swap" -> eval xs ((head td : hd : tail td),cstack,dict)
+    Unknown ".S"   -> do { putStrLn $ show (reverse istack);
+			     eval xs (istack, cstack, dict)}
+    Unknown "."    -> do { putStrLn $ show hd;
+                             eval xs (td, cstack, dict)}
+    Unknown "-"    -> eval xs ([head td - hd], cstack,dict)
+    Unknown "*"    -> eval xs ([head td * hd], cstack,dict)
+    Unknown "/"    -> eval xs ([head td `div` hd], cstack,dict)
   where xs = tail words
+	hd = head istack
+	td = tail istack
+
 
 repl :: ForthState -> IO ForthState
 repl state =
