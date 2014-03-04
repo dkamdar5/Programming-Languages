@@ -45,10 +45,12 @@ dinsert key val dict =
       Nothing -> H.insert key [val] dict
       Just x  -> H.insert key (val:x) dict
 
+--helper
+
 -- Initial Dictionary
 
 dictionary  = dinsert "+" (Prim $ wrap2 (+)) H.empty
---dictionary2 = dinsert "*" (Prim $ wrap2 (*)) dictionary
+--dictionary2 = dinsert "sq1" (Def $ ["dup","*"]) dictionary
 
 -- The Evaluator
 
@@ -58,6 +60,8 @@ eval words (istack, cstack, dict) =
   case dlookup (head words) dict of
     Num i          -> eval xs (i:istack, cstack, dict)
     Prim f         -> eval xs (f istack, cstack, dict)
+    Def s	   -> do { putStrLn $ show s;
+				eval (head s:last s:xs) (istack, cstack, dict)}
     Unknown "dup"  -> eval xs (hd:istack, cstack, dict)
     Unknown "drop" -> eval xs (td, cstack, dict)
     Unknown "rot"  -> eval xs (reverse istack, cstack, dict)
@@ -69,6 +73,8 @@ eval words (istack, cstack, dict) =
     Unknown "-"    -> eval xs ([head td - hd], cstack,dict)
     Unknown "*"    -> eval xs ([head td * hd], cstack,dict)
     Unknown "/"    -> eval xs ([head td `div` hd], cstack,dict)
+    Unknown ";"    -> eval [] (istack, cstack, dinsert (head (head cstack)) (Def $ (reverse (last cstack))) dict)
+    Unknown ":"    -> eval [last xs] (istack,[head xs]:tail (reverse (tail xs)):cstack,dict)
   where xs = tail words
 	hd = head istack
 	td = tail istack
