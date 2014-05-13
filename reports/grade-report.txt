@@ -1,17 +1,17 @@
 Grade Report for Dharmesh R. Kamdar
-Produced 2014-05-09 15:55
+Produced 2014-05-13 17:46
 Netid: dkamdar cwid: A20265708
 Course: cs440 (2014-01)  Section: 01
 
             Assignment   Status Raw Max    Norm Weight  Points 
 ---------------------- -------- --- --- ------- ------ ------- 
-                Exam 1   Graded  83  90  92.22% 0.3750 34.5833 
-                Exam 2   Graded  71  90  78.89% 0.3750 29.5833 
-            Final Exam  Pending n/a 100     n/a 0.0000  0.0000 
-          Recursion MP   Graded  55 100  55.00% 0.0500  2.7500 
-              Forth MP   Graded 100 100 100.00% 0.0500  5.0000 
-             Scheme MP  Missing   0 100   0.00% 0.0500  0.0000 
-             Prolog MP  Pending n/a 100     n/a 0.0000  0.0000 
+                Exam 1   Graded  83  90  92.22% 0.2500 23.0556 
+                Exam 2 Replaced n/a  90  87.78% 0.2500 21.9444 
+            Final Exam   Graded 158 180  87.78% 0.2500 21.9444 
+          Recursion MP   Graded  55 100  55.00% 0.0375  2.0625 
+              Forth MP   Graded 100 100 100.00% 0.0375  3.7500 
+             Scheme MP  Missing   0 100   0.00% 0.0375  0.0000 
+             Prolog MP  Missing   0 100   0.00% 0.0375  0.0000 
  Pre Course Assessment   Graded   1   1 100.00% 0.0125  1.2500 
     Recursion Activity   Graded   1   1 100.00% 0.0125  1.2500 
           BST Activity  Missing   0   1   0.00% 0.0125  0.0000 
@@ -22,4 +22,4 @@ Counter Monad Activity  Missing   0   1   0.00% 0.0125  0.0000
            Running Sum Canceled n/a   1     n/a 0.0000  0.0000 
             LL Parsing  Missing   0   1   0.00% 0.0125  0.0000 
 ---------------------- -------- --- --- ------- ------ ------- 
-                 Total                   75.67% 1.0000 75.6667 
+                 Total                   76.51% 1.0000 76.5069 
